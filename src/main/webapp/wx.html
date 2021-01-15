@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微信登录</title>
+    <style>
+        #wx {
+            height: 100%;
+            width: 100%;
+        }
+
+        #wx #login {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #2ecc71;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wx">
+        <button id="login" onclick="wechatLogin()">微信登录</button>
+    </div>
+</body>
+<script>
+    function wechatLogin() {
+        // 公众号appid
+        var appid = "换成自己的appid";
+        // 授权接口地址
+        var redirect_uri = "换成自己的授权回调地址";
+        // 状态标识
+        var state = "wx";
+        // 以snsapi_userinfo为scope发起的网页授权
+        var scope = "snsapi_userinfo";
+        // 返回类型，请填写code
+        var response_type = "code";
+        // 微信登录URL
+        var loginUrl = "https://open.weixin.qq.com/connect/oauth2/authorize" +
+            "?appid=" + appid +
+            "&redirect_uri=" + redirect_uri +
+            "&response_type=" + response_type +
+            "&scope=" + scope +
+            "&state=" + state +
+            "#wechat_redirect";
+        window.location.href = loginUrl;
+    }
+</script>
+</html>
